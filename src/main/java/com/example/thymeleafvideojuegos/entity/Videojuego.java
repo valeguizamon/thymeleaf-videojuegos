@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @Table(name = "videojuegos")
-public class videojuego implements Serializable {
+public class Videojuego implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +33,14 @@ public class videojuego implements Serializable {
 
     @JoinColumn(name = "estudio", nullable = false, updatable = false)
     @ManyToOne
-    private estudio estudio;
+    private Estudio estudio;
 
     @JoinColumn(name = "genero", nullable = false, updatable = false)
     @ManyToOne
-    private genero genero;
+    private Genero genero;
 
     @Temporal(TemporalType.DATE)
-    private Date releaseDate;
+    private Date fechaLanzamiento;
 
-    public videojuego() {}
+    public Videojuego() {}
 }

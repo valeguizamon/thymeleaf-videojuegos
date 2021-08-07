@@ -6,13 +6,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @Table(name = "genero")
-public class genero implements Serializable {
+public class Genero implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,10 @@ public class genero implements Serializable {
 
     private String nombre;
 
-    public genero() {
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "genero",fetch = FetchType.LAZY)
+    private List<Videojuego> videojuegos;
+
+
+    public Genero() {
     }
 }
