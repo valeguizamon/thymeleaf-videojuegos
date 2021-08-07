@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
-@Table(name = "videogames")
+@Table(name = "videojuegos")
 public class videojuego implements Serializable {
 
     @Id

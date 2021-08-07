@@ -20,8 +20,6 @@ public class estudio implements Serializable {
 
     private String nombre;
 
-    private String pais;
-
     public estudio() {
     }
 }
