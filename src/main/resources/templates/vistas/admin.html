@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="vistas/componentes/head :: head"/>
+    <title>Admin</title>
+</head>
+<body>
+<div th:replace="vistas/componentes/navbar :: navbar"/>
+  <div class="container d-flex justify-content-center">
+    <ul class="mt-4">
+      <li><h4> <a class="btn btn-primary" th:href="@{/admin/abm/videojuego}">ABM VIDEOJUEGO</a> </h4></li>
+      <li><h4> <a class="btn btn-success" th:href="@{/admin/abm/estudio}">ABM ESTUDIO</a> </h4></li>
+      <li><h4> <a class="btn btn-warning" th:href="@{/admin/abm/genero}">ABM GENERO</a> </h4></li>
+    </ul>
+
+  </div>
+<div th:replace="vistas/componentes/footer :: footer"/>
+</body>
+</html>

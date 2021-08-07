@@ -25,7 +25,7 @@ public class MainController {
     private ServicioGenero servicioGenero;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    //Index
+    //Retornar el string del nombre del template a llamar
     public String index(Model model){
         try {
             ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.findAll();
@@ -64,6 +64,15 @@ public class MainController {
     }
 
     //Rutas ADMIN
+    @GetMapping("admin")
+    public String adminVista(Model model){
+        try {
+            return "vistas/admin";
+        }catch(Exception e){
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
     @GetMapping("admin/abm/videojuego")
     public String abmVideojuego(Model model){
         try {

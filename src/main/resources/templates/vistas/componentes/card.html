@@ -1,9 +1,10 @@
-<div th:fragment="card">
+<div th:fragment="card mb-5">
     <div class="card shadow">
-        <img class="card-img-top" alt="Game Image" th:src="${videojuego.imagen}">
+        <img class="card-img-top" alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
         <div class="card-body">
-            <h5 class="card-title" th:text="${videojuego.titulo}">title</h5>
-            <p class="card-text">Genero: <span th:text="${videojuego.genero.nombre}">genre</span></p>
+            <h5 class="card-title" th:text="${videojuego.titulo}"></h5>
+            <p class="card-text">Estudio: <span th:text="${videojuego.estudio.nombre}"></span></p>
+            <p class="card-text">Genero: <span th:text="${videojuego.genero.nombre}"></span></p>
         </div>
         <div class="card-body" th:style="${videojuego.oferta? 'display:block':'display:none'}">
             <p class="card-text text-success">En oferta!</p>
