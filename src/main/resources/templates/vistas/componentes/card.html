@@ -1,0 +1,21 @@
+<div th:fragment="card">
+    <div class="card shadow">
+        <img class="card-img-top" alt="Game Image" th:src="${videojuego.imagen}">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${videojuego.titulo}">title</h5>
+            <p class="card-text">Genero: <span th:text="${videojuego.genero.nombre}">genre</span></p>
+        </div>
+        <div class="card-body" th:style="${videojuego.oferta? 'display:block':'display:none'}">
+            <p class="card-text text-success">En oferta!</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Precio: <span id="precio" th:text="${videojuego.precio}">1</span>$</p>
+        </div>
+        <div class="card-body">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-primary" th:href="@{/detalle/videojuego/{id}(id=${videojuego.id})}">View details</a>
+                <button class="btn btn-primary" th:attr="data-id=${videojuego.id}" id="cartButton">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

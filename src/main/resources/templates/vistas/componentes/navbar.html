@@ -1,0 +1,14 @@
+<div th:fragment="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container d-flex">
+      <a class="navbar-brand" href="/">Inicio</a>
+      <ul class="navbar-nav ms-auto mb-2">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/admin}">Administración</a>
+        </li>
+      </ul>
+      <div th:replace="vistas/componentes/search-bar :: search-bar"></div>
+    </div>
+  </nav>
+</div>
+
