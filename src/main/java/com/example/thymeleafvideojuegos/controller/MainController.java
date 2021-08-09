@@ -24,6 +24,7 @@ public class MainController {
     @Autowired
     private ServicioGenero servicioGenero;
 
+
     @RequestMapping(value="/", method = RequestMethod.GET)
     //Retornar el string del nombre del template a llamar
     public String index(Model model){

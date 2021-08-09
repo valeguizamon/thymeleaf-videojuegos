@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="vistas/componentes/head :: head"/>
+<div th:replace="vistas/componentes/head :: head" />
 <body>
-<div th:replace="vistas/componentes/navbar :: navbar"/>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-12">
-            <h3>Search  Page </h3>
+    <div th:replace="vistas/componentes/navbar :: navbar" />
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>Search Page </h3>
+            </div>
+            <div class="col-12">
+                <div th:replace="vistas/componentes/search-bar :: search-bar" />
+            </div>
         </div>
-        <div class="col-12">
-            <div th:replace="vistas/componentes/search-bar :: search-bar" />
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3 mt-3" th:each="videojuego: ${resultados}">
+                <div th:replace="vistas/componentes/card :: card" />
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-md-4 col-lg-3 mt-3" th:each="videojuego: ${resultados}">
-            <div th:replace="vistas/componentes/card :: card"/>
-        </div>
-    </div>
-</div>
-<div th:replace="vistas/componentes/footer :: footer"/>
+    <div th:replace="vistas/componentes/footer :: footer" />
+    <script src="js/login.js"></script>
 </body>
 </html>

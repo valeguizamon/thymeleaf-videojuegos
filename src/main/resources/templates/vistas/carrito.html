@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<div th:replace="vistas/componentes/head :: head"/>
-<body>
-<div th:replace="vistas/componentes/navbar :: navbar"/>
-<div>
+<div th:replace="vistas/componentes/head :: head" />
 
-</div>
-<div th:replace="vistas/componentes/footer :: footer"/>
+<body>
+    <div th:replace="vistas/componentes/navbar :: navbar" />
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-12">
+                <h1>Mi carrito de compras</h1>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acciones</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody id="cartItems"></tbody>
+                <tfoot id="footer"></tfoot>
+            </table>
+        </div>
+    </div>
+    <div th:replace="vistas/componentes/footer :: footer" />
+
+    <!-- No lo ve el usuario -->
+    <template id="template-items">
+        <tr>
+            <th scope="row">ID</th>
+            <td>Videojuego</td>
+            <td>1</td>
+            <td>
+                <button class="btn btn-info">+</button>
+                <button class="btn btn-danger">-</button>
+            </td>
+            <td>$ <span>5</span></td>
+        </tr>
+    </template>
+
+    <template id="template-footer">
+        <th scope="row" colspan="2">Total de productos</th>
+        <td>0</td>
+        <td>
+            <button class="btn btn-outline-danger" id="limpiarCarrito"> limpiar </button>
+        </td>
+        <td>$ <span>0</span></td>
+    </template>
+
+    <script src="js/carrito.js"></script>
 </body>
+
 </html>

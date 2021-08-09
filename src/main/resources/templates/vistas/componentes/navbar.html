@@ -6,8 +6,12 @@
         <li class="nav-item">
           <a class="nav-link mr-2" th:href="@{/admin}">Administración</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link mr-2" th:href="@{/carrito}">Carrito</a>
+        </li>
+        <div th:replace="vistas/componentes/search-bar :: search-bar"></div>
+        <button id="login" class="btn btn-primary ms-3">Inicio de Sesion</button>
       </ul>
-      <div th:replace="vistas/componentes/search-bar :: search-bar"></div>
     </div>
   </nav>
 </div>
