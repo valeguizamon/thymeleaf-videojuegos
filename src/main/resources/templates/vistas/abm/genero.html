@@ -32,7 +32,7 @@
                     <td th:text="${genero.nombre}">Mark</td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/crear/genero/{id}(id=${genero.id})}">Editar</a>
-                        <a class="btn btn-danger">Eliminar</a>
+                        <a class="btn btn-danger" th:href="@{/eliminar/genero/{id}(id=${genero.id})}">Eliminar</a>
                     </td>
                 </tr>
                 </tbody>

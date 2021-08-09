@@ -51,7 +51,6 @@ public class MainController {
     @GetMapping("busqueda")
     public String busquedaVideojuego(Model model, @RequestParam(value = "query", required = false) String q){
         try {
-            System.out.println(q);
             if(q!=null) {
                 ArrayList<Videojuego> resultados = (ArrayList<Videojuego>) this.servicioVideojuego.buscarPorTitulo(q);
                 model.addAttribute("resultados",resultados);

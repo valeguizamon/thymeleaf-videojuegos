@@ -1,5 +1,5 @@
-<div th:fragment="card mb-5">
-    <div class="card shadow">
+<div th:fragment="card">
+    <div class="card shadow  mb-5">
         <img class="card-img-top" alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
         <div class="card-body">
             <h5 class="card-title" th:text="${videojuego.titulo}"></h5>
@@ -14,8 +14,8 @@
         </div>
         <div class="card-body">
             <div class="d-grid gap-2">
-                <a class="btn btn-outline-primary" th:href="@{/detalle/videojuego/{id}(id=${videojuego.id})}">View details</a>
-                <button class="btn btn-primary" th:attr="data-id=${videojuego.id}" id="cartButton">Add to Cart</button>
+                <a class="btn btn-outline-primary" th:href="@{/detalle/videojuego/{id}(id=${videojuego.id})}">Ver Detalles</a>
+                <button class="btn btn-primary" th:attr="data-id=${videojuego.id}" id="cartButton">Añadir al carrito</button>
             </div>
         </div>
     </div>

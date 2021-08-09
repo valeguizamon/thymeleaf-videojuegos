@@ -38,7 +38,7 @@
                     <td th:text="${videojuego.stock}">mdo</td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/crear/videojuego/{id}(id=${videojuego.id})}">Editar</a>
-                        <a class="btn btn-danger">Eliminar</a>
+                        <a class="btn btn-danger" th:href="@{/eliminar/videojuego/{id}(id=${videojuego.id})}">Eliminar</a>
                     </td>
                 </tr>
                 </tbody>

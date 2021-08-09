@@ -32,7 +32,7 @@
                     <td th:text="${estudio.nombre}">Mark</td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/crear/estudio/{id}(id=${estudio.id})}">Editar</a>
-                        <a class="btn btn-danger">Eliminar</a>
+                        <a class="btn btn-danger" th:href="@{/eliminar/estudio/{id}(id=${estudio.id})}">Eliminar</a>
                     </td>
                 </tr>
                 </tbody>

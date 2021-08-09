@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="vistas/componentes/head :: head"/>
 <body>
+<div th:replace="vistas/componentes/navbar :: navbar"/>
 <div class="container">
     <div class="row mt-5">
         <div class="col-12">
@@ -21,7 +22,10 @@
                                 <div class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
                             </div>
                             <div class="col-md-4">
-                                <label for="estudio" class="form-label">Estudio</label>
+                                <label for="estudio" class="form-label" th:if="${!estudios.isEmpty()}">Estudio</label>
+                                <label for="estudio" class="form-label" th:unless="${!estudios.isEmpty()}">No hay estudios
+                                <a th:href="@{/admin/abm/estudio}">ABM Estudio</a>
+                                </label>
                                 <select class="form-select" id="estudio" th:field="*{estudio}">
                                     <option th:each="estudio: ${estudios}" th:value="${estudio.id}" th:text="${estudio.nombre}"></option>
                                 </select>
@@ -51,7 +55,10 @@
                                 <div class="text-danger" th:if="${#fields.hasErrors('fechaLanzamiento')}" th:errors="*{fechaLanzamiento}"></div>
                             </div>
                             <div class="col-md-4">
-                                <label for="genero" class="form-label">Genero</label>
+                                <label for="genero" class="form-label" th:if="${!generos.isEmpty()}">Genero</label>
+                                <label for="genero" class="form-label" th:unless="${!generos.isEmpty()}">No hay generos
+                                    <a th:href="@{/admin/abm/genero}">ABM Genero</a>
+                                </label>
                                 <select class="form-select" id="genero" th:field="*{genero}">
                                     <option th:each="genero: ${generos}" th:value="${genero.id}" th:text="${genero.nombre}"></option>
                                 </select>
@@ -85,5 +92,6 @@
         </div>
     </div>
 </div>
+<div th:replace="vistas/componentes/footer :: footer"/>
 </body>
 </html>

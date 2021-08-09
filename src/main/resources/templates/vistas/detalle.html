@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row mt-5" th:object="${videojuego}">
         <div class="col-12 col-md-4">
-            <img  class="img-fluid" alt="Videogame image" th:src="*{imagen}">
+            <img  class="img-fluid" alt="Videogame image" th:src="@{'/images/'} + *{imagen}">
         </div>
         <div class="col-12 col-md-8">
             <div class="card shadow-sm">
@@ -15,7 +15,7 @@
                     <p class="card-text" th:text="*{descripcion}">description</p>
                     <p class="card-text">Estudio: <span th:text="*{estudio.nombre}"></span></p>
                     <p class="card-text">Genero: <span th:text="*{genero.nombre}"></span></p>
-                    <p class="card-text">Price: <span th:text="*{precio}"></span> $</p>
+                    <p class="card-text">Precio: <span th:text="*{precio}"></span> $</p>
                 </div>
                 <div class="card-body" th:if="*{stock>0}">
                     <p class="text-success">Con stock :)</p>

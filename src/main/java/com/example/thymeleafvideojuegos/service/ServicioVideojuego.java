@@ -67,6 +67,7 @@ public class ServicioVideojuego implements ServicioG<Videojuego> {
             entity = this.repositorio.save(juego);
             return entity;
         } catch (Exception e) {
+            System.out.println(e);
             throw new Exception(e.getMessage());
         }
     }
