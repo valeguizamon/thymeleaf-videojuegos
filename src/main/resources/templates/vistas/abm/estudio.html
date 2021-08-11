@@ -23,16 +23,19 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre Estudio</th>
+                    <th scope="col">Borrado</th>
                     <th scope="col">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="estudio : ${estudios}">
-                    <th scope="row" th:text="${estudio.id}">1</th>
-                    <td th:text="${estudio.nombre}">Mark</td>
+                <tr th:each="estudio : ${estudios}" class="border" th:classappend="${!estudio.borrado} ? border-success : border-danger">
+                    <th scope="row" th:text="${estudio.id}"></th>
+                    <td th:text="${estudio.nombre}"></td>
+                    <td th:text="${estudio.borrado}" th:classappend="${!estudio.borrado} ? table-success : table-danger"></td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/crear/estudio/{id}(id=${estudio.id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{/eliminar/estudio/{id}(id=${estudio.id})}">Eliminar</a>
+                        <a th:if="${!estudio.borrado}" th:href="@{/eliminar/estudio/{id}(id=${estudio.id})}"class="btn btn-danger">Eliminar</a>
+                        <a th:unless="${!estudio.borrado}" th:href="@{/activar/estudio/{id}(id=${estudio.id})}"class="btn btn-success">Activar</a>
                     </td>
                 </tr>
                 </tbody>

@@ -29,7 +29,8 @@ public class MainController {
     //Retornar el string del nombre del template a llamar
     public String index(Model model){
         try {
-            ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.findAll();
+            //ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.findAll();
+            ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.finadAllActive();
             model.addAttribute("videojuegos",videojuegos);
             return "index";
         }catch(Exception e){

@@ -6,17 +6,17 @@
 <div class="container">
   <div class="row my-5">
     <div class="col-12">
-      <h3>Borrar Genero</h3>
+      <h3>Activar Estudio</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <div class="card" style="width: 70%; margin: auto 15%">
         <div class="card-body">
-          <form action="#" th:action="@{/eliminar/genero/{id}(id=${genero.id})}" method="POST">
+          <form action="#" th:action="@{/activar/estudio/{id}(id=${estudio.id})}" method="POST">
             <div class="row m-3">
               <div class="col-md-12">
-                <h5>¿ Esta seguro de eliminar este genero (Los datos no son borrados físicamente) ?</h5>
+                <h4>¿ Esta seguro de activar este estudio ?</h4>
               </div>
               <div class="col-md-6">
                 <a class="btn btn-outline-secondary" th:href="@{/admin}" style="width:100%">No</a>

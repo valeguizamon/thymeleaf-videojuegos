@@ -3,6 +3,8 @@ package com.example.thymeleafvideojuegos.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -13,7 +15,9 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
+@SQLDelete(sql = "UPDATE videojuegos SET borrado = true WHERE id=?")
 @Table(name = "videojuegos")
+
 public class Videojuego implements Serializable {
 
     @Id
@@ -53,10 +57,12 @@ public class Videojuego implements Serializable {
     @ManyToOne
     private Genero genero;
 
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "{NotNull.Videojuego.fechaLanzamiento}")
     @PastOrPresent(message = "{PastOrPresent.Videojuego.fechaLanzamiento}")
     private Date fechaLanzamiento;
+
+    private boolean borrado = Boolean.FALSE;
 
     public Videojuego() {}
 }

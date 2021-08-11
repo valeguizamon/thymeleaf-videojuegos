@@ -3,6 +3,7 @@ package com.example.thymeleafvideojuegos.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@SQLDelete(sql = "UPDATE genero SET borrado = true WHERE id=?")
 @Table(name = "genero")
 public class Genero implements Serializable {
 
@@ -22,12 +24,14 @@ public class Genero implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
-    @Size(min=2,max=30,message="El nombre del genero tiene un minimo de 2 caracteres y un maximo de 30 caracteres")
+    @NotEmpty(message="El nombre del genero no debe estar vacio.")
+    @Size(min=2,max=30,message="El nombre del genero tiene un minimo de 2 caracteres y un maximo de 30 caracteres,")
     private String nombre;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "genero",fetch = FetchType.LAZY)
     private List<Videojuego> videojuegos;
+
+    private boolean borrado = Boolean.FALSE;
 
     public Genero() {
     }

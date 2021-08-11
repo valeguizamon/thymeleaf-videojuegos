@@ -18,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
-import java.util.Date;
 
 @Controller
 public class VideojuegoController {
@@ -32,7 +31,7 @@ public class VideojuegoController {
     @GetMapping("detalle/videojuego/{id}")
     public String videojuegoDetalle(Model model, @PathVariable Long id){
         try {
-            Videojuego videojuego = this.servicioVideojuego.findById(id);
+            Videojuego videojuego = this.servicioVideojuego.buscarActivoPorId(id);
             model.addAttribute("videojuego",videojuego);
             return "vistas/detalle";
         }catch(Exception e){
@@ -135,6 +134,30 @@ public class VideojuegoController {
         }
     }
 
+    @GetMapping("activar/videojuego/{id}")
+    public String formularioActivarVideojuego(Model model, @PathVariable("id") Long id) {
+        try {
+            model.addAttribute("videojuego", this.servicioVideojuego.findById(id));
+            return "vistas/formularios/activar/activarVideojuego";
+        } catch (Exception e) {
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
+    @PostMapping("activar/videojuego/{id}")
+    public String activarVideojuego(Model model, @PathVariable("id") Long id){
+        try {
+            Videojuego videojuego = this.servicioVideojuego.findById(id);
+            videojuego.setBorrado(false);
+            this.servicioVideojuego.updateOne(id,videojuego);
+            return "redirect:/admin/abm/videojuego";
+        } catch (Exception e) {
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
     @GetMapping("eliminar/videojuego/{id}")
     public String formularioEliminarVideojuego(Model model, @PathVariable("id") Long id) {
         try {
@@ -147,7 +170,7 @@ public class VideojuegoController {
     }
 
     @PostMapping("eliminar/videojuego/{id}")
-    public String eliminarJuego(Model model, @PathVariable("id") Long id){
+    public String eliminarVideojuego(Model model, @PathVariable("id") Long id){
         try {
             this.servicioVideojuego.deleteOne(id);
             return "redirect:/admin/abm/videojuego";

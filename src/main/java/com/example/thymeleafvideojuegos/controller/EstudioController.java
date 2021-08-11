@@ -1,6 +1,7 @@
 package com.example.thymeleafvideojuegos.controller;
 
 import com.example.thymeleafvideojuegos.entity.Estudio;
+import com.example.thymeleafvideojuegos.entity.Genero;
 import com.example.thymeleafvideojuegos.entity.Videojuego;
 import com.example.thymeleafvideojuegos.service.ServicioEstudio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,30 @@ public class EstudioController {
             }
             return "redirect:/admin/abm/estudio";
         }catch(Exception e){
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
+    @GetMapping("activar/estudio/{id}")
+    public String formularioActivarEstudio(Model model, @PathVariable("id") Long id) {
+        try {
+            model.addAttribute("estudio", this.servicioEstudio.findById(id));
+            return "vistas/formularios/activar/activarEstudio";
+        } catch (Exception e) {
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
+    @PostMapping("activar/estudio/{id}")
+    public String activarGenero(Model model, @PathVariable("id") Long id){
+        try {
+            Estudio estudio = this.servicioEstudio.findById(id);
+            estudio.setBorrado(false);
+            this.servicioEstudio.updateOne(id,estudio);
+            return "redirect:/admin/abm/estudio";
+        } catch (Exception e) {
             model.addAttribute("error",e.getMessage());
             return "vistas/error";
         }

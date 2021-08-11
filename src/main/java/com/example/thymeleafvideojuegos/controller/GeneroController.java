@@ -2,6 +2,7 @@ package com.example.thymeleafvideojuegos.controller;
 
 import com.example.thymeleafvideojuegos.entity.Estudio;
 import com.example.thymeleafvideojuegos.entity.Genero;
+import com.example.thymeleafvideojuegos.entity.Videojuego;
 import com.example.thymeleafvideojuegos.service.ServicioGenero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,6 +60,31 @@ public class GeneroController {
             return "vistas/error";
         }
     }
+
+    @GetMapping("activar/genero/{id}")
+    public String formularioActivarGenero(Model model, @PathVariable("id") Long id) {
+        try {
+            model.addAttribute("genero", this.servicioGenero.findById(id));
+            return "vistas/formularios/activar/activarGenero";
+        } catch (Exception e) {
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
+    @PostMapping("activar/genero/{id}")
+    public String activarGenero(Model model, @PathVariable("id") Long id){
+        try {
+            Genero genero = this.servicioGenero.findById(id);
+            genero.setBorrado(false);
+            this.servicioGenero.updateOne(id,genero);
+            return "redirect:/admin/abm/genero";
+        } catch (Exception e) {
+            model.addAttribute("error",e.getMessage());
+            return "vistas/error";
+        }
+    }
+
     @GetMapping("eliminar/genero/{id}")
     public String formularioEliminarGenero(Model model, @PathVariable("id") Long id) {
         try {

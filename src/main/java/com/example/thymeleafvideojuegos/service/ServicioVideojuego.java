@@ -26,12 +26,35 @@ public class ServicioVideojuego implements ServicioG<Videojuego> {
         }
     }
 
+    @Transactional
+    public List<Videojuego> finadAllActive() throws Exception {
+        try {
+            List<Videojuego> entities = this.repositorio.buscarActivos();
+            return entities;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
     @Override
     @Transactional
     public Videojuego findById(Long id) throws Exception {
         try {
             Optional<Videojuego> opt = this.repositorio.findById(id);
             return opt.get();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Transactional
+    public Videojuego buscarActivoPorId(Long id) throws Exception {
+        try {
+            Optional<Videojuego> videojuegoOpt = this.repositorio.buscarActivoPorId(id);
+            if(videojuegoOpt.isEmpty()){
+                throw new Exception();
+            }
+            return videojuegoOpt.get();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
