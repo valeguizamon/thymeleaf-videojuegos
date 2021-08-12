@@ -41,7 +41,7 @@ const init = () => {
     let aux = { 
         id,
         titulo: obj.querySelector("h5.card-title").textContent,
-        precio: obj.querySelector('span#precio').textContent,
+        precio: parseFloat(obj.querySelector('span#precio').textContent),
         cantidad: 1
     }
 

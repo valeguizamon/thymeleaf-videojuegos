@@ -58,7 +58,7 @@ const mostrarFooter = carrito => {
     tFoot.innerHTML = ``;
 
     const totalCantidad = carrito.reduce( (acc,producto) => producto.cantidad+acc, 0);
-    const totalPrecio = carrito.reduce( (acc,producto) => ( acc+producto.cantidad )*producto.precio, 0);
+    const totalPrecio = carrito.reduce( (acc,producto) => acc+(producto.cantidad*producto.precio), 0);
 
     templateFooterTable.querySelectorAll('td')[0].textContent = totalCantidad;
     templateFooterTable.querySelector('span').textContent = totalPrecio;
