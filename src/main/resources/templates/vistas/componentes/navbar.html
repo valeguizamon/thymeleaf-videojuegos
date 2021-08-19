@@ -1,17 +1,34 @@
 <div th:fragment="navbar">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container d-flex">
-      <a class="navbar-brand" href="/">Inicio</a>
-      <ul class="navbar-nav ms-auto mb-2">
+      <a class="navbar-brand btn btn-warning text-dark" href="/"><strong>UTN-Games!</strong></a>
+      <li class="nav-item dropdown me-2">
+        <select class="form-select" aria-label="Default select example" id="select-id">
+          <option value="" selected="">-Administracion-</option>
+          <option value="http://localhost:9000/admin/abm/videojuego">Videojuego</option>
+          <option value="http://localhost:9000/admin/abm/estudio">Estudio</option>
+          <option value="http://localhost:9000/admin/abm/genero">Genero</option>
+        </select>
+      </li>
+      <li>
+        <button class="btn btn-primary" onclick="siteRedirect()">Ir</button>
+      </li>
+      <ul class="navbar-nav ms-auto mb-2 mt-2">
         <li class="nav-item">
-          <a class="nav-link mr-2" th:href="@{/admin}">Administración</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mr-2" th:href="@{/carrito}">Carrito</a>
+          <a class="nav-link mr-2 mb-2 mt-2" th:href="@{/carrito}">Carrito</a>
         </li>
         <div th:replace="vistas/componentes/search-bar :: search-bar"></div>
-        <button id="login" class="btn btn-primary ms-3">Inicio de Sesion</button>
       </ul>
+      <button id="login" class="btn btn-primary ms-2 mb-2 mt-2">Iniciar Sesion</button>
+      <!--/* Funcion para redirigir al ABM seleccionado en el dropdown */-->
+      <script>
+        function siteRedirect() {
+          var selectbox = document.getElementById("select-id");
+          var selectedValue = selectbox.options[selectbox.selectedIndex].value;
+          window.location.href = selectedValue;
+        }
+      </script>
+      <!--/* Lo hago de esta forma ya que el dropdown de bootstrap utiliza popper.js */-->
     </div>
   </nav>
 </div>

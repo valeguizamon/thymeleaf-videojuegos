@@ -9,14 +9,14 @@
 <div th:replace="vistas/componentes/navbar :: navbar"/>
 <div class="container">
     <div class="row my-5">
-        <div class="col-12">
-            <h3>ABM Genero</h3>
+        <div class="col-3">
+            <h3>Administrar Generos</h3>
+        </div>
+        <div class="col-9 d-flex justify-content-end">
+            <a th:href="@{/crear/genero/0}" class="btn btn-success">Agregar Genero</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <a th:href="@{/crear/genero/0}" class="btn btn-success">Crear</a>
-        </div>
         <div class="col-12 mt-3">
             <table class="table table-bordered" th:if="${!generos.isEmpty()}">
                 <thead class="table-dark">

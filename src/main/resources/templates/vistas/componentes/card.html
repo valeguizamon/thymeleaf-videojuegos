@@ -1,22 +1,21 @@
-<div th:fragment="card">
-    <div class="card shadow  mb-5">
-        <img class="card-img-top" alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${videojuego.titulo}"></h5>
-            <p class="card-text">Estudio: <span th:text="${videojuego.estudio.nombre}"></span></p>
-            <p class="card-text">Genero: <span th:text="${videojuego.genero.nombre}"></span></p>
-        </div>
-        <div class="card-body" th:style="${videojuego.oferta? 'display:block':'display:none'}">
-            <p class="card-text text-success">En oferta!</p>
-        </div>
-        <div class="card-body">
-            <p class="card-text">Precio: <span id="precio" th:text="${videojuego.precio}">1</span>$</p>
-        </div>
-        <div class="card-body">
-            <div class="d-grid gap-2">
-                <a class="btn btn-outline-primary" th:href="@{/detalle/videojuego/{id}(id=${videojuego.id})}">Ver Detalles</a>
-                <button class="btn btn-primary" th:attr="data-id=${videojuego.id}" id="cartButton">Añadir al carrito</button>
-            </div>
+<div class="card shadow mb-5" th:fragment="card">
+    <img class="card-img-top" alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${videojuego.titulo}"></h5>
+        <p class="card-text">Estudio: <span th:text="${videojuego.estudio.nombre}"></span></p>
+        <p class="card-text">Genero: <span th:text="${videojuego.genero.nombre}"></span></p>
+    </div>
+    <div class="card-body" th:style="${videojuego.oferta? 'display:block':'display:none'}">
+        <p class="card-text text-success">En oferta!</p>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Precio: <span id="precio" th:text="${videojuego.precio}">1</span>$</p>
+    </div>
+    <div class="card-body">
+        <div class="d-grid gap-2">
+            <a class="btn btn-outline-primary" th:href="@{/detalle/videojuego/{id}(id=${videojuego.id})}">Ver Detalles</a>
+            <button class="btn btn-primary" th:attr="data-id=${videojuego.id}" id="cartButton">Añadir al carrito</button>
         </div>
     </div>
 </div>
+

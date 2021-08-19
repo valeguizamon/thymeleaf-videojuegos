@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="vistas/componentes/head :: head" />
-
 <body>
     <div th:replace="vistas/componentes/navbar :: navbar" />
+
+    <div th:replace="vistas/componentes/jumbo :: jumbo" />
+
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-12">
-                <div th:replace="vistas/componentes/jumbo :: jumbo" />
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 col-md-4 col-lg-3" th:each="videojuego: ${videojuegos}">
+    <div class="row my-5">
+        <div class="col-12 col-md-4 col-lg-3 d-flex align-items-stretch" th:each="videojuego: ${videojuegos}">
+            <div class="card-deck">
                 <div th:replace="vistas/componentes/card :: card" />
             </div>
         </div>
     </div>
     <div th:replace="vistas/componentes/footer :: footer" />
+
     <script src="js/agregar.js"></script>
     <script src="js/login.js"></script>
 </body>
-
 </html>
