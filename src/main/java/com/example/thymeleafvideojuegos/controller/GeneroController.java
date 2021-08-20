@@ -61,45 +61,21 @@ public class GeneroController {
         }
     }
 
-    @GetMapping("activar/genero/{id}")
-    public String formularioActivarGenero(Model model, @PathVariable("id") Long id) {
+    @GetMapping("estado/genero/{id}")
+    public String formularioEstadoGenero(Model model, @PathVariable("id") Long id) {
         try {
             model.addAttribute("genero", this.servicioGenero.findById(id));
-            return "vistas/formularios/activar/activarGenero";
+            return "vistas/formularios/estado/estadoGenero";
         } catch (Exception e) {
             model.addAttribute("error",e.getMessage());
             return "vistas/error";
         }
     }
 
-    @PostMapping("activar/genero/{id}")
-    public String activarGenero(Model model, @PathVariable("id") Long id){
+    @PostMapping("estado/genero/{id}")
+    public String cambiarEstadoGenero(Model model, @PathVariable("id") Long id){
         try {
-            Genero genero = this.servicioGenero.findById(id);
-            genero.setBorrado(false);
-            this.servicioGenero.updateOne(id,genero);
-            return "redirect:/admin/abm/genero";
-        } catch (Exception e) {
-            model.addAttribute("error",e.getMessage());
-            return "vistas/error";
-        }
-    }
-
-    @GetMapping("eliminar/genero/{id}")
-    public String formularioEliminarGenero(Model model, @PathVariable("id") Long id) {
-        try {
-            model.addAttribute("genero", this.servicioGenero.findById(id));
-            return "vistas/formularios/eliminar/eliminarGenero";
-        } catch (Exception e) {
-            model.addAttribute("error",e.getMessage());
-            return "vistas/error";
-        }
-    }
-
-    @PostMapping("eliminar/genero/{id}")
-    public String eliminarGenero(Model model, @PathVariable("id") Long id){
-        try {
-            this.servicioGenero.deleteOne(id);
+            this.servicioGenero.changeState(id);
             return "redirect:/admin/abm/genero";
         } catch (Exception e) {
             model.addAttribute("error",e.getMessage());

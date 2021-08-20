@@ -12,6 +12,6 @@ public interface ServicioG <T>{
 
     public T updateOne(Long id, T entity) throws Exception;
 
-    public boolean deleteOne(Long id) throws Exception;
+    public boolean changeState(Long id) throws Exception;
 
 }

@@ -1,5 +1,6 @@
 <div class="card shadow mb-5" th:fragment="card">
-    <img class="card-img-top" alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
+    <img class="card-img-top img-fluid" style="width: 100%; height: min(40vh,250px); margin: auto;"
+         alt="Game Image" th:src="@{'/images/'} + ${videojuego.imagen}">
     <div class="card-body">
         <h5 class="card-title" th:text="${videojuego.titulo}"></h5>
         <p class="card-text">Estudio: <span th:text="${videojuego.estudio.nombre}"></span></p>

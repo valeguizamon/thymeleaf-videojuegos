@@ -64,10 +64,14 @@ public class ServicioEstudio implements ServicioG<Estudio> {
 
     @Override
     @Transactional
-    public boolean deleteOne(Long id) throws Exception {
+    public boolean changeState(Long id) throws Exception {
         try {
-            if (this.repositorio.existsById(id)) {
-                this.repositorio.deleteById(id);
+            Optional<Estudio> opt = this.repositorio.findById(id);
+
+            if (!opt.isEmpty()) {
+                Estudio estudio = opt.get();
+                estudio.setBorrado(!estudio.isBorrado());
+                this.repositorio.save(estudio);
             } else {
                 throw new Exception();
             }

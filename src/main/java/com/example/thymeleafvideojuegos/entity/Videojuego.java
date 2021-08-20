@@ -15,9 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
-@SQLDelete(sql = "UPDATE videojuegos SET borrado = true WHERE id=?")
 @Table(name = "videojuegos")
-
 public class Videojuego implements Serializable {
 
     @Id

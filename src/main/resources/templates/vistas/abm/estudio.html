@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:replace="vistas/componentes/navbar :: navbar"/>
-<div class="container">
+<div class="container mb-5">
     <div class="row my-5">
         <div class="col-3">
             <h3>Administrar Estudios</h3>
@@ -34,8 +34,8 @@
                     <td th:text="${estudio.borrado}" th:classappend="${!estudio.borrado} ? table-success : table-danger"></td>
                     <td>
                         <a class="btn btn-warning" th:href="@{/crear/estudio/{id}(id=${estudio.id})}">Editar</a>
-                        <a th:if="${!estudio.borrado}" th:href="@{/eliminar/estudio/{id}(id=${estudio.id})}"class="btn btn-danger">Eliminar</a>
-                        <a th:unless="${!estudio.borrado}" th:href="@{/activar/estudio/{id}(id=${estudio.id})}"class="btn btn-success">Activar</a>
+                        <a th:if="${!estudio.borrado}" th:href="@{/estado/estudio/{id}(id=${estudio.id})}"class="btn btn-danger">Eliminar</a>
+                        <a th:unless="${!estudio.borrado}" th:href="@{/estado/estudio/{id}(id=${estudio.id})}"class="btn btn-success">Activar</a>
                     </td>
                 </tr>
                 </tbody>
@@ -47,5 +47,7 @@
     </div>
 </div>
 <div th:replace="vistas/componentes/footer :: footer"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>z
+
 </body>
 </html>

@@ -6,17 +6,19 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-12">
-            <h3>Borrar Estudio</h3>
+            <h3 th:if="${!videojuego.borrado}">Borrar Videojuego</h3>
+            <h3 th:unless="${!videojuego.borrado}">Activar Videojuego</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
             <div class="card" style="width: 70%; margin: auto 15%">
                 <div class="card-body">
-                    <form action="#" th:action="@{/eliminar/estudio/{id}(id=${estudio.id})}" method="POST">
+                    <form action="#" th:action="@{/estado/videojuego/{id}(id=${videojuego.id})}" method="POST">
                         <div class="row m-3">
                             <div class="col-md-12">
-                                <h5>¿ Esta seguro de eliminar este estudio (Los datos no son borrados físicamente) ?</h5>
+                                <h5 th:if="${!videojuego.borrado}">¿ Esta seguro de eliminar este videojuego (Los datos no son borrados físicamente) ?</h5>
+                                <h4 th:unless="${!videojuego.borrado}">¿ Esta seguro de activar este videojuego ?</h4>
                             </div>
                             <div class="col-md-6">
                                 <a class="btn btn-outline-secondary" th:href="@{/admin}" style="width:100%">No</a>

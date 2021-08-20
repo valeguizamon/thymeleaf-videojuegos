@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Controller
 public class MainController {
@@ -24,12 +25,19 @@ public class MainController {
     @Autowired
     private ServicioGenero servicioGenero;
 
+    private String[] frases = {"Mientras más grande sea tu meta, mayor será el sabor de la victoria.","El hombre adecuado en el sitio equivocado puede cambiar el rumbo del mundo","Un famoso explorador dijo, que la grandeza está en lo que hacemos, no en quienes somos"};
+    private String[] autorFrase = {"Kratos (God of War)","G-Man (Half-Life 2)","Lara Croft (Tomb Raider)"};
+
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     //Retornar el string del nombre del template a llamar
     public String index(Model model){
         try {
-            //ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.findAll();
+
+            int randomNum = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+            System.out.println(this.frases[randomNum] + " AUTOR: " + this.autorFrase[randomNum]);
+            model.addAttribute("frase",this.frases[randomNum]);
+            model.addAttribute("fraseAutor",this.autorFrase[randomNum]);
             ArrayList<Videojuego> videojuegos = (ArrayList<Videojuego>) this.servicioVideojuego.finadAllActive();
             model.addAttribute("videojuegos",videojuegos);
             return "index";

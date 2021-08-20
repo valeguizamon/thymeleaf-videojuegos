@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@SQLDelete(sql = "UPDATE estudio SET borrado = true WHERE id=?")
 @Table(name = "estudio")
 public class Estudio implements Serializable {
 

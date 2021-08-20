@@ -97,10 +97,13 @@ public class ServicioVideojuego implements ServicioG<Videojuego> {
 
     @Override
     @Transactional
-    public boolean deleteOne(Long id) throws Exception {
+    public boolean changeState(Long id) throws Exception {
         try {
-            if (this.repositorio.existsById(id)) {
-                this.repositorio.deleteById(id);
+            Optional<Videojuego> opt = this.repositorio.findById(id);
+            if (!opt.isEmpty()) {
+                Videojuego videojuego = opt.get();
+                videojuego.setBorrado(!videojuego.isBorrado());
+                this.repositorio.save(videojuego);
             } else {
                 throw new Exception();
             }

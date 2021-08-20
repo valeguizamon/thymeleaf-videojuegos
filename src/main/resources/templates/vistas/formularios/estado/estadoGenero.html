@@ -6,17 +6,19 @@
 <div class="container">
   <div class="row my-5">
     <div class="col-12">
-      <h3>Activar Genero</h3>
+      <h3 th:if="${!genero.borrado}">Borrar Genero</h3>
+      <h3 th:unless="${!genero.borrado}">Activar Genero</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <div class="card" style="width: 70%; margin: auto 15%">
         <div class="card-body">
-          <form action="#" th:action="@{/activar/genero/{id}(id=${genero.id})}" method="POST">
+          <form action="#" th:action="@{/estado/genero/{id}(id=${genero.id})}" method="POST">
             <div class="row m-3">
               <div class="col-md-12">
-                <h4>¿ Esta seguro de activar este genero ?</h4>
+                <h5 th:if="${!genero.borrado}">¿ Esta seguro de eliminar este genero (Los datos no son borrados físicamente) ?</h5>
+                <h4 th:unless="${!genero.borrado}">¿ Esta seguro de activar este genero ?</h4>
               </div>
               <div class="col-md-6">
                 <a class="btn btn-outline-secondary" th:href="@{/admin}" style="width:100%">No</a>
