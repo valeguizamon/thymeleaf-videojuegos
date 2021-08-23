@@ -1,0 +1,11 @@
+<div class="dropdown" th:fragment="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+    aria-expanded="false">
+    Administración
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" th:href="@{/admin/abm/videojuego}">ABM Videojuego</a></li>
+    <li><a class="dropdown-item" th:href="@{/admin/abm/genero}">ABM Genero</a></li>
+    <li><a class="dropdown-item" th:href="@{/admin/abm/estudio}">ABM Estudio</a></li>
+  </ul>
+</div>
